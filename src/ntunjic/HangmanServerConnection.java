@@ -36,7 +36,7 @@ public class HangmanServerConnection implements Runnable {
                 toClient.write("-END-\r\n");
                 toClient.flush();
                 String input = fromClient.readLine();
-                switch(input) {
+                switch(input) { //EKÜ Aufgabe, Kommandos !Stop und !Restart einbauen
                     case "!stop":
                         toClient.write("Stopping active session...\r\n");
                         toClient.flush();
@@ -51,7 +51,7 @@ public class HangmanServerConnection implements Runnable {
                         this.log = new HangmanLogic(this.words.get(r.nextInt(this.words.size())));
                         break;
                     default:
-                        input = input.toUpperCase();
+                        input = input.toUpperCase(); // input max ein Zeichen und im Alphabet
                         if (input.length() == 1 && input.charAt(0) >= 'A' && input.charAt(0) <= 'Z') {
                             this.log.check(input.charAt(0));
                         } else {
